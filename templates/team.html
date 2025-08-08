@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+
+<!-- Font Awesome -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
+<style>
+  .team-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-section h2 {
+    font-size: 3rem;
+    color: #1a237e;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .team-section p {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 50px;
+  }
+
+  .swiper {
+    padding: 40px 0;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+  }
+
+  .team-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255,);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .team-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  }
+
+  .team-card img {
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border: 5px solid #1a237e;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+  }
+
+  .team-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .team-card h5 {
+    font-size: 1.3rem;
+    color: #1a237e;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .team-card p {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  .social-icons {
+    margin-top: 10px;
+  }
+
+  .social-icons a {
+    margin: 0 10px;
+    color: #1a237e;
+    font-size: 20px;
+    transition: color 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    color: #5c6bc0;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #1a237e;
+  }
+
+  @media (max-width: 768px) {
+    .team-section h2 {
+      font-size: 2rem;
+    }
+
+    .team-card {
+      padding: 25px 20px;
+    }
+  }
+</style>
+
+<!-- HTML -->
+<div class="team-section">
+  <h2>Meet Our Team</h2>
+  <p>The People Behind <strong>Skill Nova</strong></p>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      {% for member in team %}
+      <div class="swiper-slide">
+        <div class="team-card">
+          <img src="../{{ member.picture }}" alt="{{ member.title }}">
+          <h5>{{ member.title }}</h5>
+          <p><strong>{{ member.profession }}</strong></p>
+          <p>{{ member.bio }}</p>
+          <div class="social-icons">
+            {% if member.linkedin %}
+            <a href="{{ member.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
+            {% endif %}
+            {% if member.twitter %}
+            <a href="{{ member.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>
+            {% endif %}
+            {% if member.github %}
+            <a href="{{ member.github }}" target="_blank"><i class="fab fa-github"></i></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 40,
+    loop: true,
+    centeredSlides: true,
+    autoplay: {
+      delay: 4500,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
+{% endblock %}

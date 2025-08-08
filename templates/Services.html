@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  .service-icon {
+    font-size: 40px;
+    color: #1A2A80;
+    transition: transform 0.3s ease;
+  }
+
+  .card-inner {
+    perspective: 1000px;
+  }
+
+  .service-card {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .card-inner:hover .card-front {
+    transform: rotateY(180deg);
+  }
+
+  .card-inner:hover .card-back {
+    transform: rotateY(0deg);
+  }
+
+  .card-front, .card-back {
+    backface-visibility: hidden;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    padding: 25px;
+    border-radius: 15px;
+    height: 100%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .card-front {
+    background-color: #ffffff;
+    transform: rotateY(0deg);
+    position: absolute;
+    width: 100%;
+  }
+
+  .card-back {
+    background-color: #f8f9fa;
+    transform: rotateY(180deg);
+    position: absolute;
+    width: 100%;
+  }
+
+  .stars {
+    color: gold;
+    font-size: 1.2rem;
+  }
+
+  .service-card {
+    position: relative;
+    height: 300px;
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .filter-btn.active {
+    background-color: #1A2A80;
+    color: white;
+  }
+
+  @media(max-width: 767px) {
+    .service-card {
+      height: 350px;
+    }
+  }
+</style>
+
+<div class="container py-5">
+  <h2 class="text-center fw-bold mb-4 text-mycolor1">Our Services</h2>
+  <p class="text-center text-muted mb-4">Explore powerful learning features designed for your success.</p>
+
+  <!-- Filter Buttons -->
+  <div class="text-center mb-5">
+    <button class="btn btn-outline-primary filter-btn active" onclick="filterCards('all')">All</button>
+    <button class="btn btn-outline-primary filter-btn" onclick="filterCards('live')">Live</button>
+    <button class="btn btn-outline-primary filter-btn" onclick="filterCards('ai')">AI</button>
+    <button class="btn btn-outline-primary filter-btn" onclick="filterCards('cert')">Certificates</button>
+    <button class="btn btn-outline-primary filter-btn" onclick="filterCards('quiz')">Quizzes</button>
+    <button class="btn btn-outline-primary filter-btn" onclick="filterCards('assign')">Assignments</button>
+  </div>
+
+  <div class="row g-4" id="serviceContainer">
+    <!-- Service Cards -->
+    {% comment %} LIVE CLASS {% endcomment %}
+    <div class="col-md-4 service-card" data-category="live">
+      <div class="card-inner">
+        <div class="card-front text-center">
+          <i class="fas fa-chalkboard-teacher service-icon" title="Live Expert Teaching"></i>
+          <h5 class="mt-3">Live Classes</h5>
+          <p>Attend real-time sessions with industry experts via Zoom.</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="card-back text-center">
+          <p>Interactive Q&A, recordings, and class notes provided instantly.</p>
+          <a href="#" class="btn btn-sm btn-primary mt-3">Join Now</a>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} AI {% endcomment %}
+    <div class="col-md-4 service-card" data-category="ai">
+      <div class="card-inner">
+        <div class="card-front text-center">
+          <i class="fas fa-brain service-icon" title="Smart Learning Suggestions"></i>
+          <h5 class="mt-3">AI Recommendations</h5>
+          <p>Get smart content suggestions based on your learning behavior.</p>
+          <div class="stars">★★★★☆</div>
+        </div>
+        <div class="card-back text-center">
+          <p>AI-powered course, quiz, and video recommendations.</p>
+          <a href="#" class="btn btn-sm btn-primary mt-3">Explore AI</a>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} Certificates {% endcomment %}
+    <div class="col-md-4 service-card" data-category="cert">
+      <div class="card-inner">
+        <div class="card-front text-center">
+          <i class="fas fa-certificate service-icon" title="Earn Recognition"></i>
+          <h5 class="mt-3">Certificates</h5>
+          <p>Get verifiable certificates with QR code and ID.</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="card-back text-center">
+          <p>Download, share, and verify your achievements anytime.</p>
+          <a href="#" class="btn btn-sm btn-primary mt-3">View Certificates</a>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} Quiz System {% endcomment %}
+    <div class="col-md-4 service-card" data-category="quiz">
+      <div class="card-inner">
+        <div class="card-front text-center">
+          <i class="fas fa-question-circle service-icon" title="Interactive Quizzes"></i>
+          <h5 class="mt-3">Quizzes</h5>
+          <p>Test your knowledge with timed quizzes after each module.</p>
+          <div class="stars">★★★★☆</div>
+        </div>
+        <div class="card-back text-center">
+          <p>Instant scoring, explanations, and retake options available.</p>
+          <a href="#" class="btn btn-sm btn-primary mt-3">Start Quiz</a>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} Assignments {% endcomment %}
+    <div class="col-md-4 service-card" data-category="assign">
+      <div class="card-inner">
+        <div class="card-front text-center">
+          <i class="fas fa-file-alt service-icon" title="Hands-on Practice"></i>
+          <h5 class="mt-3">Assignments</h5>
+          <p>Real-world tasks to practice what you've learned in every course.</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="card-back text-center">
+          <p>Auto and manual evaluation, submission tracking, and feedback.</p>
+          <a href="#" class="btn btn-sm btn-primary mt-3">Submit Now</a>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} Mentorship {% endcomment %}
+    <div class="col-md-4 service-card" data-category="live">
+      <div class="card-inner">
+        <div class="card-front text-center">
+          <i class="fas fa-user-friends service-icon" title="1-on-1 Mentorship"></i>
+          <h5 class="mt-3">Mentorship</h5>
+          <p>Talk to industry mentors, get career advice, and personalized guidance.</p>
+          <div class="stars">★★★★☆</div>
+        </div>
+        <div class="card-back text-center">
+          <p>Live sessions with mentors, goal-setting, and career roadmaps.</p>
+          <a href="#" class="btn btn-sm btn-primary mt-3">Book a Mentor</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Filter Script -->
+<script>
+  function filterCards(category) {
+    const cards = document.querySelectorAll(".service-card");
+    const buttons = document.querySelectorAll(".filter-btn");
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+
+    cards.forEach(card => {
+      const cat = card.getAttribute("data-category");
+      if (category === "all" || cat === category) {
+        card.style.display = "block";
+        card.classList.remove("fadeOut");
+        card.classList.add("fadeIn");
+      } else {
+        card.classList.remove("fadeIn");
+        card.classList.add("fadeOut");
+        setTimeout(() => card.style.display = "none", 300);
+      }
+    });
+  }
+</script>
+
+<style>
+  .fadeIn {
+    animation: fadeIn 0.5s ease-in;
+  }
+
+  .fadeOut {
+    animation: fadeOut 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.95);}
+    to {opacity: 1; transform: scale(1);}
+  }
+
+  @keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  }
+</style>
+
+{% endblock %}

@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  body {
+    
+  }
+
+  .login-box {
+    background: linear-gradient(135deg, #1A2A80, white);
+    border-radius: 16px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    animation: fadeIn 1s ease;
+     margin: 40px;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(1);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  .login-box h2 {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #f8f9fa;
+  }
+
+  .input-group-text {
+    background: rgba(0, 0, 0,0.6);
+    border: none;
+     border-bottom:3px solid white;
+     border-radius: 30px;
+  }
+
+  .form-control {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: none;
+    border-bottom:3px solid white;
+    border-radius: 30px;
+  }
+
+  .form-control::placeholder {
+    color: #e0e0e0 !important;
+  }
+
+  .form-control:focus {
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+  }
+
+  .btn1 {
+    background: linear-gradient(to right, #1A2A80, #1A2A80);
+    color: white;
+    border: none;
+    transition: 0.3s;
+    font-weight: bold;
+  }
+
+  .btn1:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+  }
+
+  .lic {
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .extra-links {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+
+  .extra-links a {
+    color: #ffc107;
+    text-decoration: none;
+  }
+
+  .extra-links a:hover {
+    text-decoration: underline;
+  }
+
+  .social-login {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .social-login i {
+    font-size: 22px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .social-login i:hover {
+    transform: scale(1.2);
+  }
+
+  .toggle-password {
+    cursor: pointer;
+    color: #ffc107;
+  }
+</style>
+
+<div class="login-box mx-auto">
+  <h2>Sign <span class="text-warning">In <i class="fa-solid fa-key fa-spin"></i></span></h2>
+  <p class="text-center mb-4">Welcome back! Please login to your account.</p>
+  
+  <form method="post">
+    {% csrf_token %}
+    
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fa-solid fa-user lic"></i></span>
+      <input type="email" name="email" class="form-control" required placeholder="Email Address" />
+    </div>
+
+    <div class="input-group mb-2">
+      <span class="input-group-text"><i class="fa-solid fa-lock lic"></i></span>
+      <input type="password" name="password" class="form-control" id="password-field" required placeholder="Password" />
+    </div>
+
+    <div class="text-end mb-3">
+      <span class="toggle-password" onclick="togglePassword()">👁️ Show Password</span>
+    </div>
+
+    <input type="submit" value="LOGIN 🔐" class="form-control btn1 mb-3" />
+
+    <div class="extra-links mb-2">
+      <a href="#">Forgot Password?</a>
+      <a href="/register/">Create Account</a>
+    </div>
+
+    <div class="social-login mt-3">
+      <p>Or Sign in with</p>
+      <i class="fab fa-google text-danger"></i>
+      <i class="fab fa-facebook text-primary"></i>
+      <i class="fab fa-github text-white"></i>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  function togglePassword() {
+    const passField = document.getElementById('password-field');
+    if (passField.type === "password") {
+      passField.type = "text";
+    } else {
+      passField.type = "password";
+    }
+  }
+</script>
+
+{% endblock %}

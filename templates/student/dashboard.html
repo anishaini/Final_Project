@@ -1,0 +1,189 @@
+{% extends 'studentbase.html' %}
+{% load static %}
+{% if not request.session.email %}
+<script>
+    alert("You Have To Login First");location.href="/login/"
+</script>
+{% endif %}
+
+{% block content %}
+<style>
+  
+
+  .dashboard-card {
+    background: linear-gradient(to right top, #6a11cb, #2575fc);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: center;
+    padding: 40px 25px;
+    background: linear-gradient(to top, #ffffff, #f9f7fc);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: 2px solid #e3e3e3;
+  }
+
+  .dashboard-card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(to top, #8e2de2, #4a00e0);
+    color: white;
+    border: none;
+  }
+
+  .dashboard-card i {
+    font-size: 42px;
+    margin-bottom: 18px;
+    color: #6a11cb;
+    transition: color 0.4s ease;
+  }
+
+  .dashboard-card:hover i {
+    color: white;
+  }
+
+  .card-label {
+    font-weight: bold;
+    font-size: 20px;
+    transition: all 0.4s ease;
+  }
+
+  .dashboard-card:hover .card-label a {
+    color: white !important;
+  }
+
+  .card-label a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  .card-label a:hover {
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 768px) {
+    .dashboard-card {
+      margin-bottom: 25px;
+    }
+  }
+
+  /* Fade-in Animation */
+  .dashboard-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s forwards;
+    
+  }
+.dashboard-card a {
+  color:black;
+  text-decoration:none;
+}
+  .dashboard-card:nth-child(1) { animation-delay: 0.1s; }
+  .dashboard-card:nth-child(2) { animation-delay: 0.2s; }
+  .dashboard-card:nth-child(3) { animation-delay: 0.3s; }
+  .dashboard-card:nth-child(4) { animation-delay: 0.4s; }
+  .dashboard-card:nth-child(5) { animation-delay: 0.5s; }
+  .dashboard-card:nth-child(6) { animation-delay: 0.6s; }
+  .dashboard-card:nth-child(7) { animation-delay: 0.7s; }
+  .dashboard-card:nth-child(8) { animation-delay: 0.8s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .welcome-text {
+    color: black;
+    font-size: 26px;
+    text-shadow: 1px 1px 4px #00000070;
+    margin-bottom: 40px;
+  }
+</style>
+
+<div class="container py-5">
+  <h3 class="text-center welcome-text">
+    Welcome <span style="color: purple;"><b>{{ request.session.name }}</b> For your dashboard</span>
+  </h3>
+  <div class="row g-4 justify-content-center">
+
+    <!-- Card 1 -->
+    <div class="col-6 col-md-3">
+      <div class="dashboard-card">
+        <a href="/student/profile/">
+        <i class="fas fa-user-circle"></i>
+        <div class="card-label">Profile</div></a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-6 col-md-3">
+      <div class="dashboard-card">
+        <a href="/student/lectures/">
+        <i class="fas fa-video"></i>
+        <div class="card-label">Lecture</div></a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-6 col-md-3">
+      <div class="dashboard-card">
+        <a href="/student/mytask/">
+        <i class="fas fa-tasks"></i>
+        <div class="card-label">Tasks</div></a>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-6 col-md-3">
+      <div class="dashboard-card">
+        <a href="/student/mytask/">
+        <i class="fas fa-file"></i>
+        <div class="card-label">Certificates</div></a>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="col-6 col-md-3">
+      <div class="dashboard-card">
+      <a href="/student/mytask/">
+        <i class="fas fa-comments"></i>
+        <div class="card-label">Chat</div></a>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="col-6 col-md-3">
+      <div class="dashboard-card">
+        <a href="/student/mytask/">
+        <i class="fas fa-cogs"></i>
+        <div class="card-label">Settings</div></a>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="col-6 col-md-3">
+      <div class="dashboard-card">
+        <a href="/student/mytask/">
+        <i class="fas fa-lightbulb"></i>
+        <div class="card-label">AI Suggestion</div></a>
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="col-6 col-md-3">
+      <div class="dashboard-card">
+        <a href="/student/mytask/">
+        <i class="fas fa-sign-out-alt"></i>
+        <div class="card-label">Logout</div></a>
+      </div>
+    </div>
+
+
+
+  </div>
+
+</div>
+{% endblock %}

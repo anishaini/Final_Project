@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  /* Background slider wrapper */
+  .slider {
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    padding:20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Animated background image */
+  .slider::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    animation: backgroundSlider 10s infinite ease-in-out;
+    z-index: 0;
+  }
+
+  /* Black overlay */
+  .slider::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* black with 50% opacity */
+    z-index: 1;
+  }
+
+  /* Background image animation */
+  @keyframes backgroundSlider {
+    0%, 100% {
+      background-image: url("{% static 'slider/a.jpg' %}");
+    }
+    50% {
+      background-image: url("{% static 'slider/b.jpg' %}");
+    }
+  }
+
+  /* All content above background and overlay */
+  .slider-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  /* Existing Styles */
+  .login {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    position: relative;
+  }
+
+  .login span {
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .txt, .ta {
+  margin-top: 20px;
+  border: none;
+    border-bottom:3px solid white;
+  border-radius: 30px;
+  padding: 12px 20px;
+  transition: all 0.3s ease-in-out;
+  background: transparent;  /* Fully transparent background */
+  font-size: 15px;
+  color: white; /* Text color, change as needed based on background */
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2); /* Optional light glow */
+}
+
+.txt::placeholder, .ta::placeholder {
+  color: white !important; /* Placeholder visible on transparent */
+}
+
+.txt:focus, .ta:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.5);
+  background: transparent; /* Keep transparent even when focused */
+}
+
+  .btn1 {
+    margin-top: 20px;
+    background: #1A2A80;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .btn1:hover {
+    box-shadow: 0 4px 20px rgba(216, 27, 96, 0.5);
+    transform: scale(1.05);
+  }
+
+  .form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  .form-control:focus::placeholder {
+    transform: translateY(-10px);
+    font-size: 12px;
+    color: #495057;
+  }
+</style>
+
+<!-- slider start -->
+<div class="row slider">
+  <div class="col-sm-10 mx-auto slider-content">
+    <div class="row">
+      <div class="col-sm-7 pt-5">
+        <div class="fs-2 text-center text-light text-uppercase mt-5">
+          Welcome to Skill <b class="text-primary">Nova <i class="fa-solid fa-graduation-cap"></i></b>
+        </div>
+        <div class="text-center text-light">
+          <p> Skill Nova is an innovative e-learning platform designed to bridge the gap between learners and industry experts. </p>
+          <p> Our mission is to empower students with job-ready skills, guided mentorship, real-time projects, and interactive quizzes. </p>
+          <p> Whether you are a beginner or a professional, Skill Nova provides a flexible and practical learning environment tailored just for you.</p>
+        </div>
+        <a href="/register/" class="btn bg-mycolor1 text-light mx-auto d-block w-25 mt-5 rounded-pill">Register Now</a>
+      </div>
+      <div class="col-sm-5 login my-5 p-5">
+        <span class="position-absolute top-0 start-50 translate-middle bg-mycolor1 py-2 px-3 text-light rounded-pill fs-4 border border-2 border-light">Contact us</span>
+        <form method="post">
+          {% csrf_token %}
+          <input type="text" class="form-control txt" required placeholder="Your Name" name="name">
+          <input type="email" class="form-control txt" required placeholder="Your Email" name="email">
+          <input type="number" class="form-control txt" required placeholder="Mobile Number" name="mob">
+          <textarea class="form-control ta" required placeholder="Your Message" name="msg"></textarea>
+          <input type="submit" value="Send Message" class="form-control btn1">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- slider end -->
+
+{% endblock %}

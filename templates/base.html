@@ -1,0 +1,489 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <style>
+    /* Mobile First */
+
+
+/* Tablet */
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  body {
+    font-size: 20px;
+  }
+}
+        .bg-mycolor2{
+            background: #1A2A80;
+        }
+        .bg-mycolor1{
+            background:#000957;
+        }
+        .text-mycolor2{
+            color:#1A2A80;
+        }
+        .text-mycolor1{
+            color:#1A2A80;
+        }
+        .ic{
+            color:#1A2A80;
+            height:28px;
+            width:28px;
+            text-align:center;
+            line-height:28px;
+           
+            transition:3s;
+        }
+        .ic:hover{
+            transform:scale(1.03);
+            transition:1s;
+            background:#880E4F;
+            color:white;
+        }
+    .social-icons i {
+    font-size: 22px;
+    margin-right: 10px;
+    transition: 0.3s;
+  }
+        #menu{
+          background: transparent !important;
+          
+        }
+        .lists{
+          font-size: 15px;
+        }
+        #menu ul li a{
+          color: white !important;
+        }
+        .aboutcontant{
+          font-size: 18px;
+        }
+        .im{
+          height: 150px;
+        }
+        .imgpic{
+          height: 300px;
+          width: 100%;
+          transition: 2s;
+        }
+        .imgpic:hover{
+          transform: scale(1.4);
+          transition: 2s;
+        }
+        .ufooter {
+    background: linear-gradient(135deg, #1A2A80, #1A2A80);
+    color: white;
+    padding: 50px 20px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+    
+
+  .header .fa-youtube {
+    color: #ff0000;
+  }
+
+  .header .fa-twitter {
+    color: #1da1f2;
+  }
+
+  .header .fa-facebook {
+    color: #1877f2;
+  }
+
+  .header .fa-linkedin {
+    color: #0077b5;
+  }
+
+
+  .ufooter h5 {
+    color: #ffcc00;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .ufooter p,
+  .ufooter a {
+    font-size: 14px;
+    color: #ddd;
+    line-height: 1.6;
+    text-decoration: none;
+  }
+
+  .ufooter a:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+  }
+
+  .ufooter i {
+    margin-right: 8px;
+  }
+
+  .ufooter .social-icons i {
+    font-size: 22px;
+    margin-right: 10px;
+    transition: 0.3s;
+  }
+
+  .ufooter .fa-instagram {
+    color: #e4405f;
+  }
+
+  .ufooter .fa-youtube {
+    color: #ff0000;
+  }
+
+  .ufooter .fa-twitter {
+    color: #1da1f2;
+  }
+
+  .ufooter .fa-facebook {
+    color: #1877f2;
+  }
+
+  .ufooter .fa-linkedin {
+    color: #0077b5;
+  }
+
+  .bfooter {
+    background-color: #0d133d;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  .bfooter a {
+    color: #ffcc00;
+    text-decoration: none;
+  }
+
+  .bfooter a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .ufooter {
+      text-align: center;
+    }
+
+    .ufooter .col-sm-3 {
+      margin-bottom: 30px;
+    }
+  }
+        
+
+        .me{
+          margin: 0;
+          padding: 0;
+        }
+        .catic{
+          height: 60px;
+          width: 60px;
+          font-size: 30px;
+          border: 1px solid black;
+          border-radius: 7px;
+          line-height: 60px;
+          transition: 2s;
+        }
+        .catic:hover{
+          background: red;
+          color: white;
+          transition: 2s;
+        }
+        .catimg{
+          height: 200px;
+          
+        }
+        
+        }
+        
+        .btn1{
+          height:50px;
+          color: white;
+          font-size:20px;
+
+        }
+        
+         /* Gradient for Navbar */
+  .menu {
+      background: linear-gradient(#1A2A80);7
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Navbar items */
+  .navbar-nav .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+      position: relative;
+  }
+
+  .navbar-nav .nav-link:hover {
+      color: #ffe082 !important;
+      transform: scale(1.05);
+  }
+
+  .navbar-nav .nav-link i {
+      margin-right: 5px;
+      color: #ffd54f;
+  }
+
+  /* Toggle button style */
+  .navbar-toggler {
+      border: 2px solid white;
+      background: #fff3e0;
+      border-radius: 5px;
+  }
+
+  .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234A148C' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%280,0,0,0.7%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+
+  @media (max-width: 991px) {
+    .navbar-nav .nav-link {
+        margin: 10px 0;
+        text-align: center;
+    }
+  }
+    #chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4A148C;
+  color: white;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+#chatbot-box {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  height: 400px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #aaa;
+  z-index: 1000;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#chatbot-header {
+  background: #880E4F;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#chatbot-body {
+  height: 300px;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+.chat-message {
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+.chat-message.user {
+  background: #f1f1f1;
+  align-self: flex-end;
+}
+
+.chat-message.bot {
+  background: #e1bee7;
+  align-self: flex-start;
+}
+
+#chatbot-input {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #ccc;
+  padding: 10px;
+}
+    </style>
+   
+</head>
+<body>
+    <div class="container-fluid">
+      <!--start header-->
+        <div class="row header">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="row ">
+                            
+                            <img class="img-fluid" src="{% static 'images/logo1.png'%}" style="display: block; height:90px; width:200px;"/>
+                          
+                        </div>
+                    </div>
+                    <div class="col-sm-3 mt-3 ms-4">
+                        <i class="fa-solid fa-envelope ic"></i>
+                        <b>Mail <b class="text-mycolor1">us</b></b></b><br>
+                        
+                        <p>novaskill@gmail.com</p>
+                    </div>
+                    <div class="col-sm-2 mt-3 ms-4">
+                        <i class="fa-solid fa-phone ic"></i>
+                        <b>Call <b class="text-mycolor1">us</b></b><br>
+                        8764567988
+                    </div>
+                    <div class="col-sm-3 social-icons pt-3 mt-3 ms-2"> 
+                      <a href="#"><i class="fab fa-youtube"></i></a>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="#"><i class="fab fa-facebook"></i></a>
+                      <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                  <div class="col-sm-2 d-flex mt-2">
+                  
+            </div>
+                </div>
+            </div>
+           
+        </div>
+        <!-- end header -->
+    <!-- START MENU -->
+<div class="row menu bg-mycolor1">
+  <nav class="navbar navbar-expand-lg" id="menu">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center lists" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="/index/"><i class="fa-solid fa-house"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about/"><i class="fa-solid fa-address-card"></i> About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/services/"><i class="fa-solid fa-gears"></i> Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/gallery/"><i class="fa-solid fa-book"></i> Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/team/"><i class="fa-solid fa-user-plus"></i> Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact/"><i class="fa-solid fa-address-book"></i> Contact us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register/"><i class="fa-solid fa-address-card"></i> Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login/"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"><i class="fa-solid fa-comment"></i> Students Feedback</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- END MENU -->
+        <div class="row">
+          <div class="col-sm-12 mx-auto" style="min-height: 500px">
+         {% block content %}
+         
+         {% endblock %}
+         </div>
+        </div>
+        <!-- Chatbot Icon Button -->
+
+        <!-- Footer Section Start -->
+
+<div class="row ufooter">
+  <div class="col-sm-12 mx-auto">
+    <div class="row">
+      
+      <!-- About -->
+      <div class="col-sm-3">
+        <h5>About SkillNova</h5>
+        <p>
+          SkillNova is a modern e-learning platform designed to make education accessible, engaging, and effective for everyone. Whether you're preparing for exams or upskilling, we support your learning journey.
+        </p>
+        <h5 class="mt-4">Our Location</h5>
+        <div style="width: 100%; height: 120px; border-radius: 8px; overflow: hidden;">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.055219717232!2d75.82065961495622!3d26.912433283128242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db4f1e28c3173%3A0xe3b0b6a0b!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1618595990541!5m2!1sen!2sin"
+            width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Useful Links -->
+      <div class="col-sm-3">
+        <h5>Quick Links</h5>
+        <p><a href="/index/"><i class="fa-solid fa-arrow-right"></i> Home</a></p>
+        <p><a href="/about/"><i class="fa-solid fa-arrow-right"></i> About Us</a></p>
+        <p><a href="/team/"><i class="fa-solid fa-arrow-right"></i> Our Team</a></p>
+        <p><a href="/services/"><i class="fa-solid fa-arrow-right"></i> Services</a></p>
+        <p><a href="/contact/"><i class="fa-solid fa-arrow-right"></i> Contact Us</a></p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-sm-3">
+        <h5>Get in Touch</h5>
+        <p><i class="fa-solid fa-location-dot"></i> Sec. 5, Vikash Nagar, Tedhi Pulia, Ring Road, Lucknow 226022</p>
+        <p><i class="fa-solid fa-phone"></i> +91 7007237006</p>
+        <div class="social-icons mt-3">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Newsletter / Extra Column -->
+      <div class="col-sm-3">
+        <h5>Stay Connected</h5>
+        <p>Subscribe to our newsletter for latest updates and course announcements.</p>
+        <form>
+          <input type="email" placeholder="Your Email" class="form-control mb-2">
+          <button class="btn btn-warning btn-sm w-100">Subscribe</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Footer -->
+<div class="row bfooter text-center text-light">
+  <span>Developed by Anish Shaini &copy; <a href="https://www.techpile.in" target="_blank">Techpile</a></span>
+</div>
+    
+     <script src="{% static 'js/bootstrap.bundle.js' %}">
+
+    </script>
+</body>
+</html>

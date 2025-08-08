@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Custom CSS -->
+<style>
+  /* Animated gradient background */
+  .gallery {
+    
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    padding: 80px 20px;
+  }
+
+  @keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  .gallery-title {
+    font-size: 2.8rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #4A148C;
+    position: relative;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .gallery-title::after {
+    content: '';
+    width: 70px;
+    height: 5px;
+    background: #D81B60;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+  }
+
+  .gallery .card {
+    overflow: hidden;
+    border-radius: 20px;
+    border: none;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background-color: white;
+  }
+
+  .gallery .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  }
+
+  .gallery .card img {
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    border-bottom: 2px solid #D81B60;
+  }
+
+  .gallery .card:hover img {
+    transform: scale(1.08);
+  }
+
+  .gallery .card p {
+    font-weight: 600;
+    padding: 12px;
+    font-size: 1.1rem;
+    color: #6A1B9A;
+    text-align: center;
+    background: #f8f8f8;
+  }
+
+  /* Lightbox */
+  #lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.95);
+  }
+
+  #lightbox img {
+    display: block;
+    max-width: 90%;
+    max-height: 85%;
+    margin: auto;
+    box-shadow: 0 0 25px white;
+    border-radius: 15px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .gallery .card img {
+      height: 160px;
+    }
+
+    .gallery-title {
+      font-size: 2.2rem;
+    }
+  }
+</style>
+
+<!-- Gallery Section -->
+<div class="gallery">
+  <p class="gallery-title">Our <span class="text-mycolor1">Gallery</span></p>
+  <div class="container">
+    <div class="row g-4">
+      {% for x in gal %}
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+        <div class="card shadow" onclick="showImage('../{{x.picture}}')">
+          <img src="../{{x.picture}}" alt="gallery" class="card-img-top">
+          <p>{{ x.title }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" onclick="this.style.display='none'">
+  <img id="lightbox-img" src="">
+</div>
+
+<!-- Lightbox Script -->
+<script>
+  function showImage(src) {
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "block";
+  }
+</script>
+
+{% endblock %}

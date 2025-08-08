@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .register-container-wrapper {
+    max-width: 600px; /* BADHA DIYA WIDTH */
+    margin: 50px auto;
+  }
+
+  .register-container {
+    width: 100%;
+    padding: 20px;
+    background: white;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* BAAKI CSS BILKUL WAISI HI CHHOR DIYA HAI JAISE TUMNE DIYA THA */
+
+  .register-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .register-header h2 {
+    font-weight: bold;
+    color: #6a1b9a;
+    animation: slideDown 0.8s ease;
+  }
+
+  .register-header p {
+    color: #444;
+    font-size: 14px;
+  }
+
+  .form-group {
+    position: relative;
+    margin-bottom: 25px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 16px 12px 12px 12px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 3px solid #1A2A80;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #333;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+  }
+
+  .form-group textarea {
+    resize: none;
+    min-height: 90px;
+  }
+
+  .form-group label {
+    position: absolute;
+    top: 14px;
+    left: 15px;
+    color: #555;
+    font-size: 16px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+
+  .form-group input:focus + label,
+  .form-group input:not(:placeholder-shown) + label,
+  .form-group textarea:focus + label,
+  .form-group textarea:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 13px;
+    color: #6a1b9a;
+    background: #fff;
+    padding: 0 6px;
+    border-radius: 4px;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 0 3px rgba(136, 14, 79, 0.15);
+  }
+
+  .file-input-wrapper {
+    background: rgba(255, 255, 255, 0.3);
+    
+    border-radius: 14px;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+    
+    border-bottom: 3px solid #1A2A80;
+  }
+
+
+
+  .file-input-wrapper input[type="file"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-weight: 500;
+    color: grey;
+    
+    
+  }
+
+  .btn-submit {
+    background: linear-gradient(45deg, #1A2A80, white);
+    color: white;
+    border: none;
+    height: 50px;
+    border-radius: 14px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s ease;
+  }
+
+  .btn-submit:hover {
+    background: linear-gradient(45deg, #1A2A80, white);
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<div class="register-container-wrapper">
+  <div class="register-container">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <b class="fw-bold">Sign Up</b>
+      <i class="fas fa-user-plus" style="font-size: 20px; color: #6a1b9a;"></i>
+      <h3 style="margin-top: 10px; font-size: 15px; color: #4a148c;">Join us today <br>Create your free account!</h3>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        <input type="text" name="name" placeholder=" " required />
+        <label>Full Name</label>
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder=" " required />
+        <label>Email Address</label>
+      </div>
+      <div class="form-group">
+        <input type="tel" name="mob" placeholder=" " pattern="[0-9]{10}" required />
+        <label>Mobile Number</label>
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" placeholder=" " required />
+        <label>Password</label>
+      </div>
+
+      <div class="file-input-wrapper">
+        <input type="file" name="fu"/>
+      </div>
+
+      <div class="form-group">
+        <textarea name="add" placeholder=" " required></textarea>
+        <label>Address</label>
+      </div>
+
+      <button type="submit" class="btn-submit form-control">Register Now</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
